@@ -17,9 +17,8 @@ if (isset($_GET['email'])) {
         $code = uniqid();
         Database::iud("UPDATE `users` SET `verification_code`='" . $code . "' WHERE `email`='" . $email . "'");
         
-        $senderEmail = getenv('email');
-        $senderPassword = getenv('password');
-
+        $senderEmail = 'gaganaweerakoon@gmail.com';
+        $senderPassword = 'fbvaoiucldqcnjwm';
 
         $mail = new PHPMailer();
             $mail->IsSMTP();
