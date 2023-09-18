@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body class="main-body">
@@ -22,7 +21,7 @@
                     <div class="col-12 logo"></div>
                     <div class="col-12">
                         <p class="text-center title01" style="font-family:honey;font-size: 30px;letter-spacing:
-                         3px;">Hi,Welcome to eShop</p>
+                         3px;">Hi! Welcome to eShop</p>
                     </div>
                 </div>
             </div>
@@ -34,85 +33,100 @@
                     <div class="col-6 d-none d-lg-block background"></div>
 
                     <!--sign up-->
-                    <div class="col-12 col-lg-6" id="SignUpBox">
+                    <div class="col-12 col-lg-6" id="signUpBox">
                         <div class="row g-2">
                             <div class="col-12">
-                                <p class="title02">Create New Account.</p>
+                                <p class="title02">Create New Account</p>
                             </div>
                             <div class="col-12 d-none" id="msgdiv">
-                                <div class="aler alert-danger" role="alert" id="msg"></div>
+                                <div class="alert alert-danger" role="alert" id="msg"></div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <label class="form-label">First Name</label>
-                                <input class="form-control" type="text" placeholder="ex: John" id="fname" />
+                                <input class="form-control" type="text" placeholder="ex: John" id="fName" />
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Last Name</label>
-                                <input class="form-control" type="text" placeholder="ex: Doe" id="lname" />
+                                <input class="form-control" type="text" placeholder="ex: Doe" id="lName" />
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Email</label>
-                                <input class="form-control" type="email" placeholder="ex: johndoe@gmail.com" id="email" />
+                                <input class="form-control" type="email" placeholder="ex:jogndoe@gmail.com" id="email" />
                             </div>
                             <div class="col-6">
-                                <label class="form=label">Password</label>
-                                <input class="form-control" type="password" placeholder="ex: johndoe1234" id="password" />
+                                <label class="form-label">Password</label>
+                                <input class="form-control" type="password" placeholder="***********" id="password" />
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Mobile</label>
+                                <input class="form-control" type="text" placeholder="0712345678" id="mobile" />
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Gender</label>
                                 <select class="form-control" id="gender">
                                     <option value="0">Select your Gender</option>
-                                    <!--TODO-Add database logic here-->
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
                                 </select>
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn btn-primary" onclick="signUp();"> Sign Up</button>
+                                <button class="btn btn-primary" onclick="signUp();">Sign Up</button>
                             </div>
                             <div class="col-12 col-lg-6 d-grid">
-                                <button class="btn -btn-dark" onclick="ChangeView();">Already have an Account? Sign In</button>
+                                <button class="btn btn-dark" onclick="changeView();">Already have an Account? Sign In</button>
                             </div>
                         </div>
-                        <!--End of sign up-->
+                    </div>
+                    <!--End of sign up-->
 
-                        <!--sign in-->
-                        <div class="col-12 col-lg-6 d-none" id="SignInBox">
-                            <div class="col-12 col-lg-6 d-none" id="SignInBox">
-                                <div class="row g-2">
-                                    <div class="col-12">
-                                        <p class="title02">Sign In to your Account.</p>
-                                    </div>
+                    <!--sign in-->
+                    <div class="col-12 col-lg-6 d-none" id="signInBox">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <p class="title02">Sign in to your Account.</p>
+                            </div>
+                            <?php
+                                $email = "";
+                                $password = "";
 
-                                    <?php $email = isset($_COOKIE["email"]) ? $_COOKIE["email"] : "";
-                                    $password = isset($_COOKIE["password"]) ? $_COOKIE["password"] : ""; ?>
+                                if (isset($_COOKIE["email"])) {
+                                    $email = $_COOKIE["email"];
+                                }
 
-                                    <div class="col-12">
-                                        <label class="form-label">Password</label>
-                                        <input class="form-control" type="password" id="password2" value="<?php echo $password; ?>" placeholder="12345678" />
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="rememberme">
-                                            <label class="form-check-label" for="rememberme">Remember Me</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <a href="#" class="link-primary" onclick="forgotPassword();"> Forgotten Password?</a>
-                                    </div>
-                                    <div class="col-12 col-lg-6 d-grid">
-                                        <button class="btn btn-primary" onclick="signin();"> Sign In</button>
-                                    </div>
-                                    <div class="col-12 col-lg-6 d-grid">
-                                        <button class="btn btn-danger" onclick="ChangeView();"> New to eshop? Join Now </button>
-                                    </div>
+                                if (isset($_COOKIE["password"])) {
+                                    $password = $_COOKIE["password"];
+                                }
+                            ?>
+                            <div class="col-12">
+                                <label class="form-label">Email</label>
+                                <input class="form-control" type="email" id="email2" value="" placeholder="ex: johndoe@gmail.com" />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Password</label>
+                                <input class="form-control" type="password" id="password2" value="" placeholder="" />
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="rememberme">
+                                    <label class="form-check-label" for="rememberme">Remember Me</label>
                                 </div>
                             </div>
+                            <div class="col-6 text-end">
+                                <a href="#" class="link-primary" onclick="forgotPassword();">Forgotten Password?</a>
+                            </div>
+                            <div class="col-12 col-lg-6 d-grid">
+                                <button class="btn btn-primary" onclick="signIn();">Sign In</button>
+                            </div>
+                            <div class="col-12 col-lg-6 d-grid">
+                                <button class="btn btn-danger" onclick="changeView();">New to eshop? Join Now</button>
+                            </div>
                         </div>
-                        <!--End of sign in-->
                     </div>
+                    <!--End of sign in-->
                 </div>
-                <!--End of content-->
 
-                <!--modal-->
+                <!--Forgot password modal-->
                 <div class="modal" tabindex="-1" id="forgotPasswordModal">
                     <div class="modal-dialog">
                         <div class="modal-header">
@@ -151,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-                <!--End of modal-->
+                <!--End of forgot password modal-->
 
                 <!--footer-->
                 <div class="col-12 d-none d-lg-block fixed-bottom">
@@ -160,10 +174,11 @@
                 <!--End of footer-->
             </div>
         </div>
+        <!--End of content-->
 
         <!--scripts-->
         <script src="bootstrap.js"></script>
-        <script src="script.js"></script> <!--TODO-->
+        <script src="script.js"></script>
 </body>
 
 </html>
